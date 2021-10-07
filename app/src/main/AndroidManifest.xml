@@ -23,6 +23,7 @@
             android:name=".MainActivity">
 
         </activity>
+        <activity android:name=".InfoActivity"/>
     </application>
 
 </manifest>

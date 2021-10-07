@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_theme"
+    android:id="@+id/background"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -25,7 +27,7 @@
                 android:layout_height="100dp"
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
-                android:src="@drawable/logo_color" />
+                android:src="@drawable/logo_noback_cor" />
         </LinearLayout>
 
         <HorizontalScrollView
@@ -42,6 +44,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/map"
                         android:layout_width="1400dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/map_demo"
@@ -53,8 +56,8 @@
                         android:id="@+id/btn_korea"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/ic_def_korea"
                         android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_korea"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.8"
@@ -178,8 +181,24 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.363" />
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/open_info"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#00ffffff"
+        android:src="@drawable/open_info"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
 </androidx.constraintlayout.widget.ConstraintLayout>
