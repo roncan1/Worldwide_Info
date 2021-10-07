@@ -50,17 +50,134 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageButton
-                        android:id="@+id/imageView4"
+                        android:id="@+id/btn_korea"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/ic_korea"
+                        android:src="@drawable/ic_def_korea"
                         android:backgroundTint="#00ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.785"
+                        app:layout_constraintHorizontal_bias="0.8"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.353" />
+                        app:layout_constraintVertical_bias="0.363" />
+
+                    <ImageButton
+                        android:id="@+id/btn_japan"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_japan"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.855"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41" />
+
+                    <ImageButton
+                        android:id="@+id/btn_china"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_china"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.71"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.414" />
+
+                    <ImageButton
+                        android:id="@+id/btn_india"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_india"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.66"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.465" />
+
+                    <ImageButton
+                        android:id="@+id/btn_russia"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_russia"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.58"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.24" />
+
+                    <ImageButton
+                        android:id="@+id/btn_egypt"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_egypt"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.55"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.455" />
+
+                    <ImageButton
+                        android:id="@+id/btn_Italia"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_italia"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.51"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.345" />
+
+                    <ImageButton
+                        android:id="@+id/btn_france"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_france"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.45"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3" />
+
+                    <ImageButton
+                        android:id="@+id/btn_chile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_chile"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.26"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.786" />
+
+                    <ImageButton
+                        android:id="@+id/btn_usa"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#00ffffff"
+                        android:src="@drawable/ic_def_usa"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.18"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.363" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </HorizontalScrollView>
