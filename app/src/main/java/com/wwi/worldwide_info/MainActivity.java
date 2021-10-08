@@ -3,6 +3,7 @@ package com.wwi.worldwide_info;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         selectCountry();
+        openInfo(infoNum);
 
     }
 
@@ -49,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
                     if (checkCountry[nowNum] == false) {
                         checkCountry[nowNum] = true;
                         changeIcon(infoNum);
+                        openInfo.setVisibility(View.VISIBLE);
                     } else {
                         checkCountry[nowNum] = false;
                         resetIcon();
+                        openInfo.setVisibility(View.GONE);
                     }
                 }
             });
@@ -90,6 +94,17 @@ public class MainActivity extends AppCompatActivity {
         }
         background.setBackgroundColor(Color.parseColor("#005151"));
         map.setImageResource(R.drawable.map_demo_dark);
+    }
+
+    public void openInfo(int country) {
+        openInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                intent.putExtra("country", country);
+                startActivity(intent);
+            }
+        });
     }
 
     public void resetIcon() {

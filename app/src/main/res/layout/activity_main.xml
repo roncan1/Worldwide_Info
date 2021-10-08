@@ -190,8 +190,8 @@
 
     <ImageButton
         android:id="@+id/open_info"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:backgroundTint="#00ffffff"
         android:src="@drawable/open_info"
         android:visibility="gone"
