@@ -1,10 +1,10 @@
 package com.wwi.worldwide_info;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,6 +16,7 @@ public class InfoActivity extends AppCompatActivity {
     ExplosionField explosionField;
     ImageButton btn_end_info;
     ConstraintLayout thisActivity;
+    ImageView info_img1, info_img2, info_img3, info_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,5 +61,13 @@ public class InfoActivity extends AppCompatActivity {
         btn_end_info = (ImageButton) findViewById(R.id.btn_end_info);
         explosionField = ExplosionField.attach2Window(this);
         thisActivity = (ConstraintLayout) findViewById(R.id.infoActivity);
+        info_title = (ImageView) findViewById(R.id.info_tltle);
+        info_img1 = (ImageView) findViewById(R.id.info_image1);
+        info_img1.setClipToOutline(true);
+        info_img2 = (ImageView) findViewById(R.id.info_image2);
+        info_img2.setClipToOutline(true);
+        info_img3 = (ImageView) findViewById(R.id.info_image3);
+        info_img3.setClipToOutline(true);
     }
+
 }

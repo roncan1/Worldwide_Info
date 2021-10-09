@@ -34,6 +34,96 @@
                 android:src="@drawable/logo_noback" />
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/info_tltle"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/info_title_japan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_tltle">
+
+            <TextView
+                android:id="@+id/info_text_kr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/info"
+                android:lineSpacingExtra="1.2pt"
+                android:text="일본국(日本国), 약칭 일본(日本)은 동아시아 태평양에 \n있는 일본 열도의 네 개의 큰 섬과 이들 주변에 산재한\n작은 섬들로 구성되어 있는 나라이다."
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/info_text_eng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/info2"
+                android:lineSpacingExtra="1.2pt"
+                android:text="Japan is a country made up of four large islands of the\nJapanese archipelago in the East Asian Pacific Ocean and\nsmall islands scattered around them."
+                android:textColor="#ffffff"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0.621">
+
+            <ImageView
+                android:id="@+id/info_image1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_launcher_background"
+                android:background="@drawable/round"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/info_image2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_launcher_background"
+                    android:background="@drawable/round"/>
+
+                <ImageView
+                    android:id="@+id/info_image3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_launcher_background"
+                    android:background="@drawable/round"/>
+            </LinearLayout>
+        </LinearLayout>
+
         <ImageButton
             android:id="@+id/btn_end_info"
             android:layout_width="60dp"
