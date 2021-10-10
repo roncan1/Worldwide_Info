@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         selectCountry();
-        openInfo(infoNum);
+        openInfo();
 
     }
 
@@ -70,77 +70,37 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             if (i == infoNum) {
                 switch (infoNum) {
-                    case 0:
-                        btn_country[i].setImageResource(R.drawable.ic_col_japan);
-                        break;
-                    case 1:
-                        btn_country[i].setImageResource(R.drawable.ic_col_korea);
-                        break;
-                    case 2:
-                        btn_country[i].setImageResource(R.drawable.ic_col_china);
-                        break;
-                    case 3:
-                        btn_country[i].setImageResource(R.drawable.ic_col_india);
-                        break;
-                    case 4:
-                        btn_country[i].setImageResource(R.drawable.ic_col_russia);
-                        break;
-                    case 5:
-                        btn_country[i].setImageResource(R.drawable.ic_col_egypt);
-                        break;
-                    case 6:
-                        btn_country[i].setImageResource(R.drawable.ic_col_italia);
-                        break;
-                    case 7:
-                        btn_country[i].setImageResource(R.drawable.ic_col_france);
-                        break;
-                    case 8:
-                        btn_country[i].setImageResource(R.drawable.ic_col_chile);
-                        break;
-                    case 9:
-                        btn_country[i].setImageResource(R.drawable.ic_col_usa);
-                        break;
+                    case 0: btn_country[i].setImageResource(R.drawable.ic_col_japan);break;
+                    case 1: btn_country[i].setImageResource(R.drawable.ic_col_korea);break;
+                    case 2: btn_country[i].setImageResource(R.drawable.ic_col_china);break;
+                    case 3: btn_country[i].setImageResource(R.drawable.ic_col_india);break;
+                    case 4: btn_country[i].setImageResource(R.drawable.ic_col_russia);break;
+                    case 5: btn_country[i].setImageResource(R.drawable.ic_col_egypt);break;
+                    case 6: btn_country[i].setImageResource(R.drawable.ic_col_italia);break;
+                    case 7: btn_country[i].setImageResource(R.drawable.ic_col_france);break;
+                    case 8: btn_country[i].setImageResource(R.drawable.ic_col_chile);break;
+                    case 9: btn_country[i].setImageResource(R.drawable.ic_col_usa);break;
                 }
             } else {
                 switch (i) {
-                    case 0:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_japan);
-                        break;
-                    case 1:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_korea);
-                        break;
-                    case 2:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_china);
-                        break;
-                    case 3:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_india);
-                        break;
-                    case 4:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_russia);
-                        break;
-                    case 5:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_egypt);
-                        break;
-                    case 6:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_italia);
-                        break;
-                    case 7:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_france);
-                        break;
-                    case 8:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_chile);
-                        break;
-                    case 9:
-                        btn_country[i].setImageResource(R.drawable.ic_blur_usa);
-                        break;
+                    case 0: btn_country[i].setImageResource(R.drawable.ic_blur_japan);break;
+                    case 1: btn_country[i].setImageResource(R.drawable.ic_blur_korea);break;
+                    case 2: btn_country[i].setImageResource(R.drawable.ic_blur_china);break;
+                    case 3: btn_country[i].setImageResource(R.drawable.ic_blur_india);break;
+                    case 4: btn_country[i].setImageResource(R.drawable.ic_blur_russia);break;
+                    case 5: btn_country[i].setImageResource(R.drawable.ic_blur_egypt);break;
+                    case 6: btn_country[i].setImageResource(R.drawable.ic_blur_italia);break;
+                    case 7: btn_country[i].setImageResource(R.drawable.ic_blur_france);break;
+                    case 8: btn_country[i].setImageResource(R.drawable.ic_blur_chile);break;
+                    case 9: btn_country[i].setImageResource(R.drawable.ic_blur_usa);break;
                 }
             }
         }
         background.setBackgroundColor(Color.parseColor("#005151"));
-        map.setImageResource(R.drawable.map_demo_dark);
+        map.setImageResource(R.drawable.map_dark);
     }
 
-    public void openInfo(int country) {
+    public void openInfo() {
         btn_open_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-                        intent.putExtra("country", country);
+                        intent.putExtra("country", infoNum);
                         startActivity(intent);
                     }
                 }, 700);
@@ -174,39 +134,19 @@ public class MainActivity extends AppCompatActivity {
     public void resetIcon() {
         for (int i = 0; i < 10; i++) {
             switch (i) {
-                case 0:
-                    btn_country[i].setImageResource(R.drawable.ic_def_japan);
-                    break;
-                case 1:
-                    btn_country[i].setImageResource(R.drawable.ic_def_korea);
-                    break;
-                case 2:
-                    btn_country[i].setImageResource(R.drawable.ic_def_china);
-                    break;
-                case 3:
-                    btn_country[i].setImageResource(R.drawable.ic_def_india);
-                    break;
-                case 4:
-                    btn_country[i].setImageResource(R.drawable.ic_def_russia);
-                    break;
-                case 5:
-                    btn_country[i].setImageResource(R.drawable.ic_def_egypt);
-                    break;
-                case 6:
-                    btn_country[i].setImageResource(R.drawable.ic_def_italia);
-                    break;
-                case 7:
-                    btn_country[i].setImageResource(R.drawable.ic_def_france);
-                    break;
-                case 8:
-                    btn_country[i].setImageResource(R.drawable.ic_def_chile);
-                    break;
-                case 9:
-                    btn_country[i].setImageResource(R.drawable.ic_def_usa);
-                    break;
+                case 0: btn_country[i].setImageResource(R.drawable.ic_def_japan);break;
+                case 1: btn_country[i].setImageResource(R.drawable.ic_def_korea);break;
+                case 2: btn_country[i].setImageResource(R.drawable.ic_def_china);break;
+                case 3: btn_country[i].setImageResource(R.drawable.ic_def_india);break;
+                case 4: btn_country[i].setImageResource(R.drawable.ic_def_russia);break;
+                case 5: btn_country[i].setImageResource(R.drawable.ic_def_egypt);break;
+                case 6: btn_country[i].setImageResource(R.drawable.ic_def_italia);break;
+                case 7: btn_country[i].setImageResource(R.drawable.ic_def_france);break;
+                case 8: btn_country[i].setImageResource(R.drawable.ic_def_chile);break;
+                case 9: btn_country[i].setImageResource(R.drawable.ic_def_usa);break;
             }
         }
-        map.setImageResource(R.drawable.map_demo);
+        map.setImageResource(R.drawable.map);
         background.setBackgroundColor(Color.parseColor("#008080"));
     }
 
