@@ -17,6 +17,7 @@ import tyrantgit.explosionfield.ExplosionField;
 
 public class InfoActivity extends AppCompatActivity {
 
+    infoDialog infoDialog;
     ExplosionField explosionField;
     ImageButton btn_end_info;
     ConstraintLayout thisActivity;
@@ -34,12 +35,38 @@ public class InfoActivity extends AppCompatActivity {
         init();
         descriptionInit();
         doFullScreen();
-
         endInfoActivity();
         infoSet(country);
+        imageOpen(country);
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        doFullScreen();
+    }
+
+    void imageOpen(int country) {
+        info_img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                infoDialog.callFunction(country, 1);
+            }
+        });
+        info_img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                infoDialog.callFunction(country, 2);
+            }
+        });
+        info_img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                infoDialog.callFunction(country, 3);
+            }
+        });
+    }
 
     void infoSet(int country) {
 //        나라 타이틀 이미지
@@ -114,6 +141,8 @@ public class InfoActivity extends AppCompatActivity {
 
 
     public void init() {
+        infoDialog = new infoDialog(InfoActivity.this);
+
         btn_end_info = (ImageButton) findViewById(R.id.btn_end_info);
         explosionField = ExplosionField.attach2Window(this);
         thisActivity = (ConstraintLayout) findViewById(R.id.infoActivity);

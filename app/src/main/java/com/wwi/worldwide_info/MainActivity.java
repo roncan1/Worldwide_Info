@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        doFullScreen();
+    }
 
     private void doFullScreen() {
         View decorView = getWindow().getDecorView();

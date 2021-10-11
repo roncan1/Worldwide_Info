@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/container_dialog">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:background="@drawable/round"
+        android:scaleType="centerInside"
+        android:src="@drawable/russia"/>
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:text="자금성은 베이징의 중심에 있는 궁궐이다.\n자금성의 규모는 궁궐로는 세계 최대의 규모이다.\n1925년 10월 고궁 박물원으로 용도가 변경되어\n일반에게 공개되고 있다"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:fontFamily="@font/info"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:gravity="top|center"/>
+</LinearLayout>
