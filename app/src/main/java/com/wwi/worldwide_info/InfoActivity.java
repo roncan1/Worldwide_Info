@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,39 +34,70 @@ public class InfoActivity extends AppCompatActivity {
         init();
         descriptionInit();
         doFullScreen();
+
         endInfoActivity();
         infoSet(country);
 
     }
 
+
     void infoSet(int country) {
+//        나라 타이틀 이미지
         switch (country) {
-            case 0: info_title.setImageResource(R.drawable.info_title_japan);break;
-            case 1: info_title.setImageResource(R.drawable.info_title_korea);break;
-            case 2: info_title.setImageResource(R.drawable.info_title_china);break;
-            case 3: info_title.setImageResource(R.drawable.info_title_india);break;
-            case 4: info_title.setImageResource(R.drawable.info_title_russia);break;
-            case 5: info_title.setImageResource(R.drawable.info_title_egypt);break;
-            case 6: info_title.setImageResource(R.drawable.info_title_itary);break;
-            case 7: info_title.setImageResource(R.drawable.info_title_france);break;
-            case 8: info_title.setImageResource(R.drawable.info_title_chile);break;
-            case 9: info_title.setImageResource(R.drawable.info_title_usa);break;
+            case 0:
+                info_title.setImageResource(R.drawable.info_title_japan);
+                break;
+            case 1:
+                info_title.setImageResource(R.drawable.info_title_korea);
+                break;
+            case 2:
+                info_title.setImageResource(R.drawable.info_title_china);
+                break;
+            case 3:
+                info_title.setImageResource(R.drawable.info_title_india);
+                break;
+            case 4:
+                info_title.setImageResource(R.drawable.info_title_russia);
+                break;
+            case 5:
+                info_title.setImageResource(R.drawable.info_title_egypt);
+                break;
+            case 6:
+                info_title.setImageResource(R.drawable.info_title_itary);
+                break;
+            case 7:
+                info_title.setImageResource(R.drawable.info_title_france);
+                break;
+            case 8:
+                info_title.setImageResource(R.drawable.info_title_chile);
+                break;
+            case 9:
+                info_title.setImageResource(R.drawable.info_title_usa);
+                break;
         }
+//        나라 설명 세팅
         TV_info_description_kr.setText(info_description_kr[country]);
         TV_info_description_eng.setText(info_description_eng[country]);
+//        종료버튼 에니메이션 적용
+        Animation animation = AnimationUtils.loadAnimation(InfoActivity.this, R.anim.slow_popup);
+        btn_end_info.startAnimation(animation);
     }
 
     void endInfoActivity() {
         btn_end_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                explosionField.explode(btn_end_info);
                 explosionField.explode(thisActivity);
+                explosionField.explode(info_title);
+                explosionField.explode(info_img1);
+                explosionField.explode(info_img2);
+                explosionField.explode(info_img3);
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         finish();
-                        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     }
                 }, 400);
             }
@@ -74,9 +107,9 @@ public class InfoActivity extends AppCompatActivity {
     private void doFullScreen() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY|
-                        View.SYSTEM_UI_FLAG_FULLSCREEN|
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION );
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 
 
@@ -111,7 +144,7 @@ public class InfoActivity extends AppCompatActivity {
         info_description_kr[2] = "중화인민공화국(中华人民共和国) 또는 중국(中国)\n동아시아 한반도 서쪽에 있는 나라로\n중국 공산당이 독재하는일당제 사회주의 국가이다.";
         info_description_kr[3] = "인도 공화국(भारत गणराज्य), 약칭 인도( भारत )는\n남아시아에 있는 나라로, 인도 아대륙의 거의 대부분을\n영토로 소유하고 있는 국가이다.";
         info_description_kr[4] = "러시아 연방(Росси́йская Федера́ция), \n약칭 러시아(Росси́я)는 동유럽과 북아시아에 걸쳐 있는\n연방제 국가이며 세계에서 가장 영토가 넓은 국가이다.";
-        info_description_kr[5] = "이집트 아랍 공화국(جمهورية مصر العربية) 줄여서 이집트\n(مصر)는 북아프리카와 서아시아의 시나이 반도에 결쳐있는\n약 5000년의 유구한 역사를 지니고 있는 국가이다.";
+        info_description_kr[5] = "이집트 아랍 공화국(جمهورية مصر العربية) 줄여서 이집트는\n북아프리카와 서아시아의 시나이 반도에 결쳐있는\n약 5000년의 유구한 역사를 지니고 있는 국가이다.";
         info_description_kr[6] = "이탈리아 공화국(Repubblica Italiana), 약칭 이탈리아(It\nalia)는 이탈리아반도와 지중해의 두 개의 섬으로 이루어진\n시칠리아 및 사르데냐로 이루어진 단일 의회 공화국이다.";
         info_description_kr[7] = "프랑스 공화국(République française) 약칭 프랑스(Fra\nnce)는 서유럽의 본토와 남아메리카의 프랑스령 기아나를\n비롯한 해외 레지옹과 해외 영토로 이루어진 국가이다.";
         info_description_kr[8] = "칠레 공화국(República de Chile), 줄여서 칠레(Chile)는\n태평양과 남아메리카의 안데스 산맥 사이에 남북으로\n긴 영토를 가진 나라이다.";
@@ -129,7 +162,6 @@ public class InfoActivity extends AppCompatActivity {
         info_description_eng[8] = "Chile is a country that stretches from north to south bet\nween the Pacific Ocean and the Andes in South America.";
         info_description_eng[9] = "The United States of America, abbreviated to the United\nStates, is a federal republic consisting of 50 states and o\nne special district.";
     }
-
 
 
 }
