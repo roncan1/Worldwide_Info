@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btn_open_info;
     ImageView map;
     int infoNum = 0;
+    int[] back_img = null;
     Boolean[] checkCountry;
-    Animation info_open_anim;
+    Animation info_open_anim, ic_on_anim, ic_off_anim;
 
     //    0 = 일본 | 1 = 한국 | 2 = 중국 | 3 = 인도 | 4 = 러시아
 //    5 = 이집트 | 6 = 이탈리아 | 7 = 프랑스 | 8 = 칠레 | 9 = 미국
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     if (checkCountry[nowNum] == false) {
                         checkCountry[nowNum] = true;
                         changeIcon(infoNum);
+                        changeMap(infoNum);
                         btn_open_info.setVisibility(View.VISIBLE);
                     } else {
                         checkCountry[nowNum] = false;
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     public void changeIcon(int infoNum) {
         for (int i = 0; i < 10; i++) {
             if (i == infoNum) {
+                btn_country[i].startAnimation(ic_on_anim);
                 switch (infoNum) {
                     case 0: btn_country[i].setImageResource(R.drawable.ic_col_japan);break;
                     case 1: btn_country[i].setImageResource(R.drawable.ic_col_korea);break;
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     case 9: btn_country[i].setImageResource(R.drawable.ic_col_usa);break;
                 }
             } else {
+                btn_country[i].startAnimation(ic_off_anim);
                 switch (i) {
                     case 0: btn_country[i].setImageResource(R.drawable.ic_blur_japan);break;
                     case 1: btn_country[i].setImageResource(R.drawable.ic_blur_korea);break;
@@ -101,8 +105,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void changeMap(int infoNum) {
         background.setBackgroundColor(Color.parseColor("#005151"));
-        map.setImageResource(R.drawable.map_dark);
+        map.setImageResource(back_img[infoNum]);
     }
 
     public void openInfo() {
@@ -161,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
         background = (ConstraintLayout) findViewById(R.id.background);
         map = (ImageView) findViewById(R.id.map);
         info_open_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_info);
+        ic_on_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ic_on);
+        ic_off_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ic_off);
         btn_open_info = (ImageButton) findViewById(R.id.open_info);
         btn_country[0] = (ImageButton) findViewById(R.id.btn_japan);
         btn_country[1] = (ImageButton) findViewById(R.id.btn_korea);
@@ -172,6 +181,18 @@ public class MainActivity extends AppCompatActivity {
         btn_country[7] = (ImageButton) findViewById(R.id.btn_france);
         btn_country[8] = (ImageButton) findViewById(R.id.btn_chile);
         btn_country[9] = (ImageButton) findViewById(R.id.btn_usa);
+
+        back_img = new int[] {
+                R.drawable.map_japan,
+                R.drawable.map_korea,
+                R.drawable.map_china,
+                R.drawable.map_india,
+                R.drawable.map_russia,
+                R.drawable.map_egypt,
+                R.drawable.map_italy,
+                R.drawable.map_frence,
+                R.drawable.map_chile,
+                R.drawable.map_usa,};
     }
 
 
