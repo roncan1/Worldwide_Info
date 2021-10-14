@@ -32,15 +32,15 @@ public class infoDialog {
         wm.width = 200;
         wm.height = 200;
         dlg.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        init(dlg, country, img);
-//        setImage(country, img);
-//        setDescription(country, img);
+        init(dlg);
+        setImage(country, img);
+        setDescription(country, img);
         dlg.show();
         doFullScreen(dlg);
         dismissDialog(dlg);
     }
 
-    void init(Dialog dialog, int country, int img) {
+    void init(Dialog dialog) {
         image = (ImageView) dialog.findViewById(R.id.image);
         description = (TextView) dialog.findViewById(R.id.description);
         description.setMovementMethod(new ScrollingMovementMethod());
@@ -48,7 +48,6 @@ public class infoDialog {
         container = (LinearLayout) dialog.findViewById(R.id.container_dialog);
 
         descriptionText = new String[10][3];
-
 
         images = new int[10][3];
 
@@ -82,6 +81,52 @@ public class infoDialog {
         });
     }
 
+    void initDescription() {
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+        descriptionText[0][0] = "";
+    }
+
+    void initImg() {
+
+    }
+
     private void doFullScreen(Dialog dialog) {
         View decorView = dialog.getWindow().getDecorView();
         decorView.setSystemUiVisibility(
@@ -89,5 +134,6 @@ public class infoDialog {
                         View.SYSTEM_UI_FLAG_FULLSCREEN |
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
+
 
 }

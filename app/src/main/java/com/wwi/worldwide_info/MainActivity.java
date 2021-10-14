@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -19,22 +20,21 @@ public class MainActivity extends AppCompatActivity {
     ImageButton[] btn_country;
     ImageButton btn_open_info;
     ImageView map;
-    int infoNum = 0;
+    int infoNum;
     int[] back_img = null;
     Boolean[] checkCountry;
-    Animation info_open_anim, ic_on_anim, ic_off_anim;
+    Boolean selectCountry = false;
+    Animation info_open_anim, ic_on_anim, ic_off_anim, ic_none_anim, none_anim, fadeIn_anim, fadeOut_anim;
 
-    //    0 = 일본 | 1 = 한국 | 2 = 중국 | 3 = 인도 | 4 = 러시아
-//    5 = 이집트 | 6 = 이탈리아 | 7 = 프랑스 | 8 = 칠레 | 9 = 미국
+    //    0 = 일본 | 1 = 한국 | 2 = 중국 | 3 = 인도 | 4 = 러시아 | 5 = 이집트 | 6 = 이탈리아 | 7 = 프랑스 | 8 = 칠레 | 9 = 미국
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        doFullScreen();
+        doFullScreen(); //전체화면
         setContentView(R.layout.activity_main);
         init();
-        selectCountry();
-        openInfo();
-
+        selectCountry(); // 국가 선택
+        openInfo(); // 인포화면 전환
     }
 
     @Override
@@ -53,30 +53,37 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectCountry() {
         for (int i = 0; i < 10; i++) {
-            int nowNum = i;
+            int nowNum = i; // 현재 선택된 국가
             btn_country[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    infoNum = nowNum;
-                    if (checkCountry[nowNum] == false) {
-                        checkCountry[nowNum] = true;
-                        changeIcon(infoNum);
-                        changeMap(infoNum);
-                        btn_open_info.setVisibility(View.VISIBLE);
-                    } else {
-                        checkCountry[nowNum] = false;
-                        resetIcon();
-                        btn_open_info.setVisibility(View.GONE);
+                    int beforeNum = infoNum; // 이전에 선택된 국가
+                    infoNum = nowNum; //현재 선택된 국가를 인포넘에 넣어줌
+                    if (checkCountry[nowNum] == false) { // 현재 선택된 국가가 비활성화일때
+                        checkCountry[nowNum] = true; // 현재 국가가 활성화되어있다고 설정
+                        changeIcon(infoNum); // 국가 아이콘 변경
+                        changeMap(infoNum);  // 맵 이미지 변경
+                        btn_open_info.setVisibility(View.VISIBLE); // 인포화면 전환 버튼 보이게 표시
+                        checkCountry[beforeNum] = false; // 이전에 선택되었던 버튼 비활성화로 변경
+                        selectCountry = true;
+                        Log.d("before", "현재 : " + beforeNum);
+                    } else { // 현재 선택된 국가가 활성화일때
+                        checkCountry[nowNum] = false; // 현재 국가가 활성화되어있지 않다고 설정
+                        resetIcon(); // 아이콘과 맵 초기화
+                        infoNum = 10; // beforeNum이 이상한 값을 잡지 않도록 infoNum을 10으로 설정
+                        btn_open_info.setVisibility(View.GONE); // 인포화면 버튼을 비활성화
+                        selectCountry = false;
+                        Log.d("before", "현재 : " + beforeNum);
                     }
                 }
             });
         }
     }
 
-    public void changeIcon(int infoNum) {
+    public void changeIcon(int infoNum) { // 선택된 국가의 이미지를 컬러로 바꾸고 나머지 국가를 블러처리
         for (int i = 0; i < 10; i++) {
             if (i == infoNum) {
-                btn_country[i].startAnimation(ic_on_anim);
+                btn_country[infoNum].startAnimation(ic_on_anim);
                 switch (infoNum) {
                     case 0: btn_country[i].setImageResource(R.drawable.ic_col_japan);break;
                     case 1: btn_country[i].setImageResource(R.drawable.ic_col_korea);break;
@@ -90,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
                     case 9: btn_country[i].setImageResource(R.drawable.ic_col_usa);break;
                 }
             } else {
-                btn_country[i].startAnimation(ic_off_anim);
+                if (selectCountry == true) btn_country[i].startAnimation(ic_none_anim);
+                if (selectCountry == false) btn_country[i].startAnimation(ic_off_anim);
                 switch (i) {
                     case 0: btn_country[i].setImageResource(R.drawable.ic_blur_japan);break;
                     case 1: btn_country[i].setImageResource(R.drawable.ic_blur_korea);break;
@@ -107,12 +115,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void changeMap(int infoNum) {
+    public void changeMap(int infoNum) { // 맵 이미지를 변경 (다크테마)
         background.setBackgroundColor(Color.parseColor("#005151"));
-        map.setImageResource(back_img[infoNum]);
+        map.startAnimation(fadeOut_anim);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                map.setImageResource(back_img[infoNum]);
+                map.startAnimation(fadeIn_anim);
+            }
+        }, 150);
     }
 
-    public void openInfo() {
+    public void openInfo() { // 현재 선택된 국가가 어디인지를 담아서 화면전환
         btn_open_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -143,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void resetIcon() {
+    public void resetIcon() { // 아이콘과 맵을 초기화
         for (int i = 0; i < 10; i++) {
             switch (i) {
                 case 0: btn_country[i].setImageResource(R.drawable.ic_def_japan);break;
@@ -157,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 case 8: btn_country[i].setImageResource(R.drawable.ic_def_chile);break;
                 case 9: btn_country[i].setImageResource(R.drawable.ic_def_usa);break;
             }
+            btn_country[i].startAnimation(none_anim);
         }
         map.setImageResource(R.drawable.map);
         background.setBackgroundColor(Color.parseColor("#008080"));
@@ -164,12 +180,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void init() {
         btn_country = new ImageButton[10];
-        checkCountry = new Boolean[]{false, false, false, false, false, false, false, false, false, false};
+        checkCountry = new Boolean[]{false, false, false, false, false, false, false, false, false, false, false};
         background = (ConstraintLayout) findViewById(R.id.background);
         map = (ImageView) findViewById(R.id.map);
         info_open_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_info);
         ic_on_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ic_on);
         ic_off_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ic_off);
+        ic_none_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ic_none);
+        none_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.none);
+        fadeIn_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        fadeOut_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
         btn_open_info = (ImageButton) findViewById(R.id.open_info);
         btn_country[0] = (ImageButton) findViewById(R.id.btn_japan);
         btn_country[1] = (ImageButton) findViewById(R.id.btn_korea);
@@ -192,7 +212,8 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.map_italy,
                 R.drawable.map_frence,
                 R.drawable.map_chile,
-                R.drawable.map_usa,};
+                R.drawable.map_usa,
+        };
     }
 
 
