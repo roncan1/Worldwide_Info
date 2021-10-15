@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeMap(int infoNum) { // 맵 이미지를 변경 (다크테마)
-        background.setBackgroundColor(Color.parseColor("#005151"));
+        background.setBackgroundColor(Color.parseColor("#195555"));
         map.startAnimation(fadeOut_anim);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         btn_open_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    btn_open_info.startAnimation(info_open_anim);
+                btn_open_info.startAnimation(info_open_anim);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
