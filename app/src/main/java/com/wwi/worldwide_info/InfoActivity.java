@@ -17,6 +17,7 @@ import tyrantgit.explosionfield.ExplosionField;
 
 public class InfoActivity extends AppCompatActivity {
 
+    ImgDescription imgD;
     infoDialog infoDialog;
     ExplosionField explosionField;
     ImageButton btn_end_info;
@@ -105,9 +106,19 @@ public class InfoActivity extends AppCompatActivity {
 //        나라 설명 세팅
         TV_info_description_kr.setText(info_description_kr[country]);
         TV_info_description_eng.setText(info_description_eng[country]);
+
+//        하위 이미지 세팅
+        infoImgSet(country);
+
 //        종료버튼 에니메이션 적용
         Animation animation = AnimationUtils.loadAnimation(InfoActivity.this, R.anim.slow_popup);
         btn_end_info.startAnimation(animation);
+    }
+
+    void infoImgSet(int country) {
+        info_img1.setImageResource(imgD.images[country][0]);
+        info_img2.setImageResource(imgD.images[country][1]);
+        info_img3.setImageResource(imgD.images[country][2]);
     }
 
     void endInfoActivity() {
@@ -141,6 +152,7 @@ public class InfoActivity extends AppCompatActivity {
 
 
     public void init() {
+        imgD = new ImgDescription();
         infoDialog = new infoDialog(InfoActivity.this);
 
         btn_end_info = (ImageButton) findViewById(R.id.btn_end_info);

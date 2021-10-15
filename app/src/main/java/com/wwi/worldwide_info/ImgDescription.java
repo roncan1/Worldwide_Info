@@ -57,7 +57,7 @@ public class ImgDescription {
         title[4][2] = "보드카";
 
 //        이집트
-        title[5][0] = "스핑크스";
+        title[5][0] = "기자의 대스핑크스";
         title[5][1] = "피라미드";
         title[5][2] = "나일강";
 
@@ -96,7 +96,7 @@ public class ImgDescription {
                 "\'새 왕조가 큰 복을 누려 번영할 것\'\n이라는 의미가 담겨 있다.\n1395년 태조 이성계가 창건하였고,\n" +
                 "1592년 임진왜란으로 불타 없어졌다가,\n고종 때인 1867년 중건 되었다.";
         description[1][1] = "지상 123층, 높이 554.5m로\n대한민국 최고층 건물이자 세계에서\n5번째로 높은 건물이다.\n" +
-                "2011년 ~ 2017년 동안 최고층 마천루였던\n포스코타워-송도를 제치고 2017년부터\n최고층 마천루의 자리를 지키고있다." +
+                "2011년 ~ 2017년 동안 최고층 마천루였던\n포스코타워-송도를 제치고 2017년부터\n최고층 마천루의 자리를 지키고있다.\n" +
                 "타워동에는 5성급호텔과 오피스,\n오피스텔, 전망대, 쇼핑몰 등이 있다.";
         description[1][2] = "서울특별시는 대한민국의\n 최대 도시이자 수도이며\n법률상 대한민국 제 1의 도시로 규정되어 있다.\n" +
                 "현재 대한민국 유일 특별시이며\n북한까지 포함해도 북한 최대 도시\n평양의 인구가 300만 명밖에 되지않아\n" +
@@ -127,8 +127,12 @@ public class ImgDescription {
                 "과도한 음주문화가 보편적으로 통하고있다.\n 근래에는 큰 사회문제가 되고 있어\n정부에서 이를 해결하고자 하고있다.";
 
 //        이집트
-        description[5][0] = "";
-        description[5][1] = "";
+        description[5][0] = "스핑크스의 어원은 사자의 몸에 사람의 머리가 달린\n상상속의 동물이며 이집트, 메소포타미아,\n" +
+                "그리스, 동남아시아 등 지역의 설화에서 등장한다.\n우리가 \'스핑크스\' 하면 떠올리는 것은\n카프레왕의 피라미드 근처에 위치하고 있는.\n" +
+                "\'기자의 대스핑크스\' 이며\n현재 유네스코 세계유산에 등재되어있다.";
+        description[5][1] = "고대 이집트 초기에 왕릉으로\n사용되었던 것으로 추정되는 거대 건축물이다.\n무덤이란 것이 중론이지만\n그냥 무덤은 아니라는 주장도 있다.\n" +
+                "기자의 대피라미드들은 고대로부터 매우 유명해서\n세계 7대 불가사의로 꼽히기도 하는데\n약 4000년 전의 유물이다.\n" +
+                "현재 유네스코 세계유산으로 등재되어있다.";
         description[5][2] = "나일강은 아프리카 대륙의 동북부를 흐르는 강이다.\n총 길이는 6,650km 이며 세계에서 가장 긴 강이다.\n" +
                 "일반적인 강과 다른점으로 정기적으로 범람하는것이 있는데\n이때 영양소가 풍부한 부엽토, 부식토를\n하류 이집트에 가득 옮겨주게 되는데\n" +
                 "이는 고대 이집트 문명의 번영의 중요한 역할을 했다.";
@@ -173,53 +177,53 @@ public class ImgDescription {
 
     void setImages() {
 //        일본
-        images[0][0] = R.drawable.ic_launcher_background;
-        images[0][1] = R.drawable.ic_launcher_background;
-        images[0][2] = R.drawable.ic_launcher_background;
+        images[0][0] = R.drawable.japan1;
+        images[0][1] = R.drawable.japan2;
+        images[0][2] = R.drawable.japan3;
 
 //        한국
-        images[1][0] = R.drawable.ic_launcher_background;
-        images[1][1] = R.drawable.ic_launcher_background;
-        images[1][2] = R.drawable.ic_launcher_background;
+        images[1][0] = R.drawable.korea1;
+        images[1][1] = R.drawable.korea2;
+        images[1][2] = R.drawable.korea3;
 
 //        중국
-        images[2][0] = R.drawable.ic_launcher_background;
-        images[2][1] = R.drawable.ic_launcher_background;
-        images[2][2] = R.drawable.ic_launcher_background;
+        images[2][0] = R.drawable.china1;
+        images[2][1] = R.drawable.china2;
+        images[2][2] = R.drawable.china3;
 
 //        인도
-        images[3][0] = R.drawable.ic_launcher_background;
-        images[3][1] = R.drawable.ic_launcher_background;
-        images[3][2] = R.drawable.ic_launcher_background;
+        images[3][0] = R.drawable.india1;
+        images[3][1] = R.drawable.india2;
+        images[3][2] = R.drawable.india3;
 
 //        러시아
-        images[4][0] = R.drawable.ic_launcher_background;
-        images[4][1] = R.drawable.ic_launcher_background;
-        images[4][2] = R.drawable.ic_launcher_background;
+        images[4][0] = R.drawable.russia1;
+        images[4][1] = R.drawable.russia2;
+        images[4][2] = R.drawable.russia3;
 
 //        이집트
-        images[5][0] = R.drawable.ic_launcher_background;
-        images[5][1] = R.drawable.ic_launcher_background;
-        images[5][2] = R.drawable.ic_launcher_background;
+        images[5][0] = R.drawable.egypt1;
+        images[5][1] = R.drawable.egypt2;
+        images[5][2] = R.drawable.egypt3;
 
 //        이탈리아
-        images[6][0] = R.drawable.ic_launcher_background;
-        images[6][1] = R.drawable.ic_launcher_background;
-        images[6][2] = R.drawable.ic_launcher_background;
+        images[6][0] = R.drawable.italy1;
+        images[6][1] = R.drawable.italy2;
+        images[6][2] = R.drawable.italy3;
 
 //        프랑스
-        images[7][0] = R.drawable.ic_launcher_background;
-        images[7][1] = R.drawable.ic_launcher_background;
-        images[7][2] = R.drawable.ic_launcher_background;
+        images[7][0] = R.drawable.france1;
+        images[7][1] = R.drawable.france2;
+        images[7][2] = R.drawable.france3;
 
 //        칠레
-        images[8][0] = R.drawable.ic_launcher_background;
-        images[8][1] = R.drawable.ic_launcher_background;
-        images[8][2] = R.drawable.ic_launcher_background;
+        images[8][0] = R.drawable.chile1;
+        images[8][1] = R.drawable.chile2;
+        images[8][2] = R.drawable.chile3;
 
 //        미국
-        images[9][0] = R.drawable.ic_launcher_background;
-        images[9][1] = R.drawable.ic_launcher_background;
-        images[9][2] = R.drawable.ic_launcher_background;
+        images[9][0] = R.drawable.usa1;
+        images[9][1] = R.drawable.usa2;
+        images[9][2] = R.drawable.usa3;
     }
 }
