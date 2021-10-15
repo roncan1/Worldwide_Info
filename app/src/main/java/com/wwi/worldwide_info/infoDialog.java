@@ -13,11 +13,11 @@ import android.widget.TextView;
 
 public class infoDialog {
     private Context context;
+    ImgDescription imgD;
     LinearLayout container;
     ImageView image;
-    TextView description;
-    String[][] descriptionText;
-    int[][] images;
+    TextView description, title;
+
 
     public infoDialog(Context context) {
         this.context = context;
@@ -35,42 +35,34 @@ public class infoDialog {
         init(dlg);
         setImage(country, img);
         setDescription(country, img);
+        setTitle(country, img);
         dlg.show();
         doFullScreen(dlg);
         dismissDialog(dlg);
     }
 
     void init(Dialog dialog) {
+        imgD = new ImgDescription();
         image = (ImageView) dialog.findViewById(R.id.image);
+        title = (TextView) dialog.findViewById(R.id.title);
         description = (TextView) dialog.findViewById(R.id.description);
         description.setMovementMethod(new ScrollingMovementMethod());
-//        scrollBottom(description);
         container = (LinearLayout) dialog.findViewById(R.id.container_dialog);
-
-        descriptionText = new String[10][3];
-
-        images = new int[10][3];
-
-
     }
 
     void setImage(int country, int img) {
-        image.setImageResource(images[country][img]);
+        image.setImageResource(imgD.getImages(country, img));
+    }
+
+    void setTitle(int country, int img) {
+        title.setText(imgD.getTitle(country, img));
     }
 
     void setDescription(int country, int img) {
-        description.setText(descriptionText[country][img]);
+        description.setText(imgD.getDescriptionText(country, img));
     }
 
-//    private void scrollBottom(TextView textView) {
-//        int lineTop =  textView.getLayout().getLineTop(textView.getLineCount()) ;
-//        int scrollY = lineTop - textView.getHeight();
-//        if (scrollY > 0) {
-//            textView.scrollTo(0, scrollY);
-//        } else {
-//            textView.scrollTo(0, 0);
-//        }
-//    }
+
 
     void dismissDialog(Dialog dialog) {
         container.setOnClickListener(new View.OnClickListener() {
@@ -81,51 +73,6 @@ public class infoDialog {
         });
     }
 
-    void initDescription() {
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-        descriptionText[0][0] = "";
-    }
-
-    void initImg() {
-
-    }
 
     private void doFullScreen(Dialog dialog) {
         View decorView = dialog.getWindow().getDecorView();

@@ -9,10 +9,21 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1.2"
         android:background="@drawable/round"
         android:scaleType="centerInside"
         android:src="@drawable/russia"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:text="자금성"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/info"
+        android:textColor="#ffffff"
+        android:gravity="center"/>
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
@@ -23,7 +34,7 @@
         android:textAlignment="center"
         android:textSize="18dp"
         android:fontFamily="@font/info"
-        android:textColor="#ffffff"
+        android:textColor="#FFFFFF"
         android:textStyle="italic"
         android:gravity="top|center"/>
 </LinearLayout>

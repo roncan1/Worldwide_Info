@@ -51,19 +51,19 @@ public class InfoActivity extends AppCompatActivity {
         info_img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 1);
+                infoDialog.callFunction(country, 0);
             }
         });
         info_img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 2);
+                infoDialog.callFunction(country, 1);
             }
         });
         info_img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 3);
+                infoDialog.callFunction(country, 2);
             }
         });
     }
