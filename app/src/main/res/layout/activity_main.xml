@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_theme"
-    android:id="@+id/background"
     tools:context=".MainActivity">
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -59,137 +60,450 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageButton
-                        android:id="@+id/btn_korea"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_korea"
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.8"
+                        app:layout_constraintHorizontal_bias="0.89"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.33" />
+                        app:layout_constraintVertical_bias="0.38">
 
-                    <ImageButton
-                        android:id="@+id/btn_japan"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_japan"
+                        <FrameLayout
+                            android:id="@+id/time_japan"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_japan"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_japan"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_japan" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.9"
+                        app:layout_constraintHorizontal_bias="0.805"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.43" />
+                        app:layout_constraintVertical_bias="0.26">
 
-                    <ImageButton
-                        android:id="@+id/btn_china"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_china"
+                        <FrameLayout
+                            android:id="@+id/time_korea"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_korea"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_korea"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_korea" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.73"
+                        app:layout_constraintHorizontal_bias="0.68"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.346" />
+                        app:layout_constraintVertical_bias="0.28">
 
-                    <ImageButton
-                        android:id="@+id/btn_india"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_india"
+                        <FrameLayout
+                            android:id="@+id/time_china"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_china"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_china"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_china" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.63"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.46" />
+                        app:layout_constraintVertical_bias="0.44">
 
-                    <ImageButton
-                        android:id="@+id/btn_russia"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_russia"
+                        <FrameLayout
+                            android:id="@+id/time_india"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_india"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_india"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_india" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.58"
+                        app:layout_constraintHorizontal_bias="0.59"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.24" />
+                        app:layout_constraintVertical_bias="0.16">
 
-                    <ImageButton
-                        android:id="@+id/btn_egypt"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_egypt"
+                        <FrameLayout
+                            android:id="@+id/time_russia"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_russia"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_russia"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_russia" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.55"
+                        app:layout_constraintHorizontal_bias="0.54"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.577" />
+                        app:layout_constraintVertical_bias="0.538">
 
-                    <ImageButton
-                        android:id="@+id/btn_Italia"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_italia"
+                        <FrameLayout
+                            android:id="@+id/time_egypt"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_egypt"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_egypt"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_egypt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.48"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.429" />
+                        app:layout_constraintVertical_bias="0.36">
 
-                    <ImageButton
-                        android:id="@+id/btn_france"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_france"
+                        <FrameLayout
+                            android:id="@+id/time_italia"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_italia"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_Italia"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_italia" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.445"
+                        app:layout_constraintHorizontal_bias="0.44"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.32" />
+                        app:layout_constraintVertical_bias="0.245">
 
-                    <ImageButton
-                        android:id="@+id/btn_chile"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_chile"
+                        <FrameLayout
+                            android:id="@+id/time_france"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_france"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_france"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_france" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.26"
+                        app:layout_constraintHorizontal_bias="0.245"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.786" />
+                        app:layout_constraintVertical_bias="0.786">
+
+                        <FrameLayout
+                            android:id="@+id/time_chile"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:visibility="invisible">
+
+                            <ImageView
+                                android:layout_width="130dp"
+                                android:layout_height="65dp"
+                                android:layout_gravity="center"
+                                android:backgroundTint="#00ffffff"
+                                android:src="@drawable/time_back" />
+
+                            <TextView
+                                android:id="@+id/time_text_chile"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center|top"
+                                android:fontFamily="@font/time"
+                                android:gravity="center"
+                                android:text="PM 09:12"
+                                android:textSize="22dp" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_chile"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/ic_def_chile" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.19" >
+
+                    <FrameLayout
+                        android:id="@+id/time_usa"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:visibility="invisible">
+
+                        <ImageView
+                            android:layout_width="130dp"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#00ffffff"
+                            android:src="@drawable/time_back" />
+
+                        <TextView
+                            android:id="@+id/time_text_usa"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center|top"
+                            android:fontFamily="@font/time"
+                            android:gravity="center"
+                            android:text="PM 09:12"
+                            android:textSize="22dp" />
+                    </FrameLayout>
 
                     <ImageButton
                         android:id="@+id/btn_usa"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:backgroundTint="#00ffffff"
-                        android:src="@drawable/ic_def_usa"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.164"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.265" />
-
-
+                        android:src="@drawable/ic_def_usa" />
+                    </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </HorizontalScrollView>
