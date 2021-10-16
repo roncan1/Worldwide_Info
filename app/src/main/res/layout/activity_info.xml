@@ -59,24 +59,30 @@
             <TextView
                 android:id="@+id/info_text_kr"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_marginBottom="5dp"
+                android:autoSizeMaxTextSize="30dp"
+                android:autoSizeMinTextSize="15dp"
+                android:autoSizeStepGranularity="5dp"
+                android:autoSizeTextType="uniform"
                 android:fontFamily="@font/info"
                 android:lineSpacingExtra="1.2pt"
-                android:text=""
+                android:text="일본국(日本国), 약칭 일본(日本)은 동아시아 태평양에있는 일본 열도의 네 개의 큰 섬과 이들 주변에 산재한 작은 섬들로 구성되어 있는 나라이다."
                 android:textColor="#ffffff"
-                android:textSize="15dp"
                 android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/info_text_eng"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
+                android:autoSizeMaxTextSize="25dp"
+                android:autoSizeMinTextSize="13dp"
+                android:autoSizeStepGranularity="3dp"
+                android:autoSizeTextType="uniform"
                 android:fontFamily="@font/info2"
                 android:lineSpacingExtra="1.2pt"
-                android:text="Japan is a country made up of four large islands of the\nJapanese archipelago in the East Asian Pacific Ocean and\nsmall islands scattered around them."
-                android:textColor="#ffffff"
-                android:textSize="12dp" />
+                android:text="Japan is a country made up of four large islands of the Japanese archipelago in the East Asian Pacific Ocean and small islands scattered around them."
+                android:textColor="#ffffff" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,9 +109,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:orientation="horizontal"
-                android:padding="20dp"
-                android:layout_weight="1">
+                android:padding="20dp">
 
                 <ImageView
                     android:id="@+id/info_image1"

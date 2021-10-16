@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton[] btn_country;
     ImageButton btn_open_info;
     ImageView map;
-    int infoNum;
+    int infoNum = 10;
     int[] back_img = null;
     Boolean[] checkCountry;
     Boolean selectCountry = false;
