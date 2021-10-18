@@ -33,11 +33,11 @@ public class infoDialog {
         wm.height = 200;
         dlg.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         init(dlg);
+        doFullScreen(dlg);
         setImage(country, img);
         setDescription(country, img);
         setTitle(country, img);
         dlg.show();
-        doFullScreen(dlg);
         dismissDialog(dlg);
     }
 

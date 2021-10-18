@@ -67,7 +67,7 @@
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.89"
+                        app:layout_constraintHorizontal_bias="0.91"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.38">
@@ -93,7 +93,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -112,7 +113,7 @@
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.805"
+                        app:layout_constraintHorizontal_bias="0.825"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.26">
@@ -138,7 +139,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -183,7 +185,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -227,7 +230,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -271,7 +275,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -318,7 +323,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -362,7 +368,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -407,7 +414,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton
@@ -453,7 +461,8 @@
                                 android:fontFamily="@font/time"
                                 android:gravity="center"
                                 android:text="PM 09:12"
-                                android:textSize="22dp" />
+                                android:textSize="22dp"
+                                android:textColor="#595959"/>
                         </FrameLayout>
 
                         <ImageButton

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
@@ -64,12 +65,22 @@ public class MainActivity extends AppCompatActivity {
         doFullScreen();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            thread.stop();
+            thread.destroy();
+        } catch (Exception e){}
+    }
+
     private void doFullScreen() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
                         View.SYSTEM_UI_FLAG_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION );
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     public void selectCountry() {
