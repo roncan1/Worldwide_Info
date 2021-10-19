@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        btn_open_info.setClickable(true);
         doFullScreen();
     }
 
@@ -252,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
         btn_open_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_open_info.setClickable(false);
                 btn_open_info.startAnimation(info_open_anim);
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -336,6 +338,7 @@ public class MainActivity extends AppCompatActivity {
         background = (ConstraintLayout) findViewById(R.id.background);
         map = (ImageView) findViewById(R.id.map);
         btn_open_info = (ImageButton) findViewById(R.id.open_info);
+        btn_open_info.setClickable(true);
 
         btn_country = new ImageButton[10];
         btn_country[0] = (ImageButton) findViewById(R.id.btn_japan);
