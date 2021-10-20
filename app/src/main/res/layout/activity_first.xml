@@ -46,4 +46,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.87" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/info2"
+        android:gravity="center"
+        android:text="랜드마크 아이콘 출처 : Freepik"
+        android:textColor="#ABEEEEEE"
+        android:textSize="11dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_anim"
+        app:layout_constraintVertical_bias="0.984" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
