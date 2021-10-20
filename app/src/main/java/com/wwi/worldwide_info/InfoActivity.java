@@ -31,8 +31,8 @@ public class InfoActivity extends AppCompatActivity {
     String[] info_description_kr, info_description_eng;
     Intent intent;
     int country;
-    Boolean isFabOpen = false;
-    Animation fab_open, fab_close;
+    Boolean isFabOpen = false, isInfoOpen = true;
+    Animation fab_open, fab_close, fab_main_open, fab_main_close;
     FloatingActionButton fab_main, fab_back, fab_covid;
 
     @Override
@@ -80,13 +80,33 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 toggleFab();
+                toggleFabIcon();
             }
         });
     }
 
+    void toggleInfoCovid() {
+        if (isInfoOpen) {
+            explosionField.explode(TV_info_description_kr);
+            explosionField.explode(TV_info_description_eng);
+            explosionField.explode(info_img1);
+            explosionField.explode(info_img2);
+            explosionField.explode(info_img3);
+
+            TV_info_description_kr.setVisibility(View.GONE);
+            TV_info_description_eng.setVisibility(View.GONE);
+            info_img1.setVisibility(View.GONE);
+            info_img2.setVisibility(View.GONE);
+            info_img3.setVisibility(View.GONE);
+
+        } else {
+
+        }
+    }
+
     void toggleFab() {
         if (isFabOpen) {
-            fab_main.setImageResource(R.drawable.ic_plus);
+            fab_main.startAnimation(fab_main_close);
             fab_back.startAnimation(fab_close);
             fab_covid.startAnimation(fab_close);
             fab_back.setClickable(false);
@@ -94,13 +114,23 @@ public class InfoActivity extends AppCompatActivity {
             isFabOpen = false;
             Log.d("fab", "toggleFab: 1");
         } else {
-            fab_main.setImageResource(R.drawable.ic_x);
+            fab_main.startAnimation(fab_main_open);
             fab_back.startAnimation(fab_open);
             fab_covid.startAnimation(fab_open);
             fab_back.setClickable(true);
             fab_covid.setClickable(true);
             isFabOpen = true;
             Log.d("fab", "toggleFab: 0");
+        }
+    }
+
+    void toggleFabIcon() {
+        if (isInfoOpen) {
+            fab_covid.setImageResource(R.drawable.ic_virus);
+            isInfoOpen = false;
+        } else {
+            fab_covid.setImageResource(R.drawable.ic_info);
+            isInfoOpen = true;
         }
     }
 
@@ -126,7 +156,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     void infoSet(int country) {
-//        나라 타이틀 이미지
+//       나라 타이틀 이미지
         switch (country) {
             case 0:
                 info_title.setImageResource(R.drawable.info_title_japan);
@@ -188,7 +218,6 @@ public class InfoActivity extends AppCompatActivity {
         }, 400);
     }
 
-
     private void doFullScreen() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
@@ -198,10 +227,11 @@ public class InfoActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-
     public void init() {
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        fab_main_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_main_open);
+        fab_main_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_main_close);
         fab_main = (FloatingActionButton) findViewById(R.id.fab_main);
         fab_back = (FloatingActionButton) findViewById(R.id.fab_sub1);
         fab_covid = (FloatingActionButton) findViewById(R.id.fab_sub2);

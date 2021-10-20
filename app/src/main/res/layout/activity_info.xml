@@ -156,6 +156,41 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <TextView
+            android:id="@+id/covid_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:autoSizeMaxTextSize="30dp"
+            android:autoSizeMinTextSize="12dp"
+            android:autoSizeStepGranularity="3dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/time"
+            android:gravity="center"
+            android:text="실시간 코로나 상황"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"/>
+
+        <WebView
+            android:id="@+id/covid_web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+    </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_sub2"
         android:layout_width="wrap_content"
@@ -171,7 +206,7 @@
         app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.83" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_sub1"
