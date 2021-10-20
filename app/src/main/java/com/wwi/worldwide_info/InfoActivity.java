@@ -1,8 +1,10 @@
 package com.wwi.worldwide_info;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import tyrantgit.explosionfield.ExplosionField;
 
 public class InfoActivity extends AppCompatActivity {
@@ -21,13 +25,15 @@ public class InfoActivity extends AppCompatActivity {
     ImgDescription imgD;
     infoDialog infoDialog;
     ExplosionField explosionField;
-    ImageButton btn_end_info;
     ConstraintLayout thisActivity;
     ImageView info_img1, info_img2, info_img3, info_title;
     TextView TV_info_description_kr, TV_info_description_eng;
     String[] info_description_kr, info_description_eng;
     Intent intent;
     int country;
+    Boolean isFabOpen = false;
+    Animation fab_open, fab_close;
+    FloatingActionButton fab_main, fab_back, fab_covid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +43,9 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         init();
         descriptionInit();
-        endInfoActivity();
         infoSet(country);
         imageOpen(country);
-
+        setPab();
     }
 
     @Override
@@ -53,6 +58,50 @@ public class InfoActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         doFullScreen();
+    }
+
+    void setPab() {
+        fab_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleFab();
+            }
+        });
+
+        fab_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleFab();
+                endInfoActivity();
+            }
+        });
+
+        fab_covid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleFab();
+            }
+        });
+    }
+
+    void toggleFab() {
+        if (isFabOpen) {
+            fab_main.setImageResource(R.drawable.ic_plus);
+            fab_back.startAnimation(fab_close);
+            fab_covid.startAnimation(fab_close);
+            fab_back.setClickable(false);
+            fab_covid.setClickable(false);
+            isFabOpen = false;
+            Log.d("fab", "toggleFab: 1");
+        } else {
+            fab_main.setImageResource(R.drawable.ic_x);
+            fab_back.startAnimation(fab_open);
+            fab_covid.startAnimation(fab_open);
+            fab_back.setClickable(true);
+            fab_covid.setClickable(true);
+            isFabOpen = true;
+            Log.d("fab", "toggleFab: 0");
+        }
     }
 
     void imageOpen(int country) {
@@ -116,10 +165,6 @@ public class InfoActivity extends AppCompatActivity {
 
 //        하위 이미지 세팅
         infoImgSet(country);
-
-//        종료버튼 에니메이션 적용
-        Animation animation = AnimationUtils.loadAnimation(InfoActivity.this, R.anim.slow_popup);
-        btn_end_info.startAnimation(animation);
     }
 
     void infoImgSet(int country) {
@@ -129,25 +174,20 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     void endInfoActivity() {
-        btn_end_info.setOnClickListener(new View.OnClickListener() {
+        explosionField.explode(thisActivity);
+        explosionField.explode(info_title);
+        explosionField.explode(info_img1);
+        explosionField.explode(info_img2);
+        explosionField.explode(info_img3);
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                explosionField.explode(thisActivity);
-                explosionField.explode(info_title);
-                explosionField.explode(info_img1);
-                explosionField.explode(info_img2);
-                explosionField.explode(info_img3);
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        finish();
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    }
-                }, 400);
+            public void run() {
+                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
-        });
+        }, 400);
     }
+
 
     private void doFullScreen() {
         View decorView = getWindow().getDecorView();
@@ -155,15 +195,20 @@ public class InfoActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
                         View.SYSTEM_UI_FLAG_FULLSCREEN |
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
 
     public void init() {
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        fab_main = (FloatingActionButton) findViewById(R.id.fab_main);
+        fab_back = (FloatingActionButton) findViewById(R.id.fab_sub1);
+        fab_covid = (FloatingActionButton) findViewById(R.id.fab_sub2);
+
         imgD = new ImgDescription();
         infoDialog = new infoDialog(InfoActivity.this);
 
-        btn_end_info = (ImageButton) findViewById(R.id.btn_end_info);
         explosionField = ExplosionField.attach2Window(this);
         thisActivity = (ConstraintLayout) findViewById(R.id.infoActivity);
 

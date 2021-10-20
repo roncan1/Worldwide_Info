@@ -3,6 +3,7 @@ package com.wwi.worldwide_info;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     Boolean[] checkCountry;         // 어떤 국가가 선택되어있는지
     Boolean selectCountry = false;  // 국가가 선택이 되어있는 상태인지
     String[] textTimeZone;          // 타임존 이름
-    Animation info_open_anim, ic_on_anim, ic_off_anim, ic_none_anim, none_anim, fadeIn_anim, fadeOut_anim;
+    Animation info_open_anim, ic_on_anim, ic_off_anim, ic_none_anim, none_anim, fadeIn_anim, fadeOut_anim, fab_open, fab_close;
 
 
     @Override
