@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import tyrantgit.explosionfield.ExplosionField;
 
@@ -40,7 +41,7 @@ public class InfoActivity extends AppCompatActivity {
 
     String[] info_description_kr, info_description_eng, web_url;
     int country;
-    Boolean isFabOpen = false, isInfoOpen = false;
+    Boolean isFabOpen = false, isInfoOpen = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,24 +55,11 @@ public class InfoActivity extends AppCompatActivity {
         imageOpen(country);
         setPab();
         setCovidWeb(country);
+        showToast();
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("checkDialogEnd", "onRestart: ");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("checkDialogEnd", "onResume: ");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("checkDialogEnd", "onPause: ");
+    void showToast() {
+        FancyToast.makeText(this,"사진을 터치하여 추가 정보를 확인",FancyToast.LENGTH_SHORT, FancyToast.INFO,false).show();
     }
 
     void setPab() {
@@ -93,9 +81,9 @@ public class InfoActivity extends AppCompatActivity {
         fab_covid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                toggleInfoCovid();
                 toggleFab();
                 toggleFabIcon();
-                toggleInfoCovid();
             }
         });
     }
@@ -200,19 +188,19 @@ public class InfoActivity extends AppCompatActivity {
         info_img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 0, infoActivity);
+                infoDialog.callFunction(country, 0);
             }
         });
         info_img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 1, infoActivity);
+                infoDialog.callFunction(country, 1);
             }
         });
         info_img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 2, infoActivity);
+                infoDialog.callFunction(country, 2);
             }
         });
     }
@@ -266,11 +254,16 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     void endInfoActivity() {
-        explosionField.explode(thisActivity);
-        explosionField.explode(info_title);
-        explosionField.explode(info_img1);
-        explosionField.explode(info_img2);
-        explosionField.explode(info_img3);
+        if (isInfoOpen) {
+            explosionField.explode(thisActivity);
+            explosionField.explode(info_title);
+            explosionField.explode(info_img1);
+            explosionField.explode(info_img2);
+            explosionField.explode(info_img3);
+        } else {
+            explosionField.explode(web_covid);
+            explosionField.explode(TV_covid);
+        }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -303,6 +296,7 @@ public class InfoActivity extends AppCompatActivity {
 
         TV_covid = (TextView) findViewById(R.id.covid_text);
         web_covid = (WebView) findViewById(R.id.covid_web);
+        web_covid.setClipToOutline(true);
         web_url = new String[]{
                 "https://www.worldometers.info/coronavirus/country/japan/",
                 "https://www.worldometers.info/coronavirus/country/south-korea/",

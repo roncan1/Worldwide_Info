@@ -23,7 +23,7 @@ public class infoDialog {
         this.context = context;
     }
 
-    public void callFunction(int country, int img, InfoActivity infoActivity) {
+    public void callFunction(int country, int img) {
         final Dialog dlg = new Dialog(context);
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dlg.setContentView(R.layout.dialog_info);

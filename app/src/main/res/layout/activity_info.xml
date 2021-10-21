@@ -188,7 +188,8 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:background="@drawable/round"/>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
