@@ -1,6 +1,5 @@
 package com.wwi.worldwide_info;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +8,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,18 +23,24 @@ import tyrantgit.explosionfield.ExplosionField;
 
 public class InfoActivity extends AppCompatActivity {
 
+    InfoActivity infoActivity;
     ImgDescription imgD;
     infoDialog infoDialog;
+
     ExplosionField explosionField;
     ConstraintLayout thisActivity;
+
+    TextView TV_info_description_kr, TV_info_description_eng, TV_covid;
+    WebView web_covid;
+    WebSettings webSettings;
     ImageView info_img1, info_img2, info_img3, info_title;
-    TextView TV_info_description_kr, TV_info_description_eng;
-    String[] info_description_kr, info_description_eng;
-    Intent intent;
-    int country;
-    Boolean isFabOpen = false, isInfoOpen = true;
-    Animation fab_open, fab_close, fab_main_open, fab_main_close;
     FloatingActionButton fab_main, fab_back, fab_covid;
+    Intent intent;
+    Animation fab_open, fab_close, fab_main_open, fab_main_close, fade_out, fade_in;
+
+    String[] info_description_kr, info_description_eng, web_url;
+    int country;
+    Boolean isFabOpen = false, isInfoOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +53,25 @@ public class InfoActivity extends AppCompatActivity {
         infoSet(country);
         imageOpen(country);
         setPab();
+        setCovidWeb(country);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("checkDialogEnd", "onRestart: ");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        doFullScreen();
+        Log.d("checkDialogEnd", "onResume: ");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        doFullScreen();
+        Log.d("checkDialogEnd", "onPause: ");
     }
 
     void setPab() {
@@ -81,27 +95,75 @@ public class InfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 toggleFab();
                 toggleFabIcon();
+                toggleInfoCovid();
             }
         });
     }
 
     void toggleInfoCovid() {
         if (isInfoOpen) {
-            explosionField.explode(TV_info_description_kr);
-            explosionField.explode(TV_info_description_eng);
-            explosionField.explode(info_img1);
-            explosionField.explode(info_img2);
-            explosionField.explode(info_img3);
+            TV_info_description_kr.startAnimation(fade_out);
+            TV_info_description_eng.startAnimation(fade_out);
+            info_img1.startAnimation(fade_out);
+            info_img2.startAnimation(fade_out);
+            info_img3.startAnimation(fade_out);
 
-            TV_info_description_kr.setVisibility(View.GONE);
-            TV_info_description_eng.setVisibility(View.GONE);
-            info_img1.setVisibility(View.GONE);
-            info_img2.setVisibility(View.GONE);
-            info_img3.setVisibility(View.GONE);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    TV_info_description_kr.setVisibility(View.GONE);
+                    TV_info_description_eng.setVisibility(View.GONE);
+                    info_img1.setVisibility(View.GONE);
+                    info_img2.setVisibility(View.GONE);
+                    info_img3.setVisibility(View.GONE);
+
+                    TV_covid.startAnimation(fade_in);
+                    web_covid.startAnimation(fade_in);
+                    TV_covid.setVisibility(View.VISIBLE);
+                    web_covid.setVisibility(View.VISIBLE);
+                }
+            }, 150);
 
         } else {
+            TV_covid.startAnimation(fade_out);
+            web_covid.startAnimation(fade_out);
 
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    TV_covid.setVisibility(View.GONE);
+                    web_covid.setVisibility(View.GONE);
+                    TV_info_description_kr.startAnimation(fade_in);
+                    TV_info_description_eng.startAnimation(fade_in);
+                    info_img1.startAnimation(fade_in);
+                    info_img2.startAnimation(fade_in);
+                    info_img3.startAnimation(fade_in);
+
+                    TV_info_description_kr.setVisibility(View.VISIBLE);
+                    TV_info_description_eng.setVisibility(View.VISIBLE);
+                    info_img1.setVisibility(View.VISIBLE);
+                    info_img2.setVisibility(View.VISIBLE);
+                    info_img3.setVisibility(View.VISIBLE);
+                }
+            }, 150);
         }
+    }
+
+    void setCovidWeb(int country) {
+        web_covid.setWebViewClient(new WebViewClient());
+        webSettings = web_covid.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setSupportMultipleWindows(false);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(false);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setSupportZoom(false);
+        webSettings.setBuiltInZoomControls(false);
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        web_covid.loadUrl(web_url[country]);
     }
 
     void toggleFab() {
@@ -138,19 +200,19 @@ public class InfoActivity extends AppCompatActivity {
         info_img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 0);
+                infoDialog.callFunction(country, 0, infoActivity);
             }
         });
         info_img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 1);
+                infoDialog.callFunction(country, 1, infoActivity);
             }
         });
         info_img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoDialog.callFunction(country, 2);
+                infoDialog.callFunction(country, 2, infoActivity);
             }
         });
     }
@@ -228,13 +290,31 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void init() {
+        infoActivity = new InfoActivity();
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         fab_main_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_main_open);
         fab_main_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_main_close);
+        fade_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        fade_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
         fab_main = (FloatingActionButton) findViewById(R.id.fab_main);
         fab_back = (FloatingActionButton) findViewById(R.id.fab_sub1);
         fab_covid = (FloatingActionButton) findViewById(R.id.fab_sub2);
+
+        TV_covid = (TextView) findViewById(R.id.covid_text);
+        web_covid = (WebView) findViewById(R.id.covid_web);
+        web_url = new String[]{
+                "https://www.worldometers.info/coronavirus/country/japan/",
+                "https://www.worldometers.info/coronavirus/country/south-korea/",
+                "https://www.worldometers.info/coronavirus/country/china/",
+                "https://www.worldometers.info/coronavirus/country/india/",
+                "https://www.worldometers.info/coronavirus/country/russia/",
+                "https://www.worldometers.info/coronavirus/country/egypt/",
+                "https://www.worldometers.info/coronavirus/country/italy/",
+                "https://www.worldometers.info/coronavirus/country/france/",
+                "https://www.worldometers.info/coronavirus/country/chile/",
+                "https://www.worldometers.info/coronavirus/country/us/"
+        };
 
         imgD = new ImgDescription();
         infoDialog = new infoDialog(InfoActivity.this);

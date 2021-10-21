@@ -23,7 +23,7 @@ public class infoDialog {
         this.context = context;
     }
 
-    public void callFunction(int country, int img) {
+    public void callFunction(int country, int img, InfoActivity infoActivity) {
         final Dialog dlg = new Dialog(context);
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dlg.setContentView(R.layout.dialog_info);
@@ -80,6 +80,7 @@ public class infoDialog {
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
                         View.SYSTEM_UI_FLAG_FULLSCREEN |
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
     }
 
 
