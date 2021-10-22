@@ -67,18 +67,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //폰인지 여부
-    public void IsPhone() {
+    public Boolean IsPhone() {
         //화면 사이즈 종류 구하기
         int screenSizeType = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
 
         if(screenSizeType== Configuration.SCREENLAYOUT_SIZE_NORMAL || screenSizeType==Configuration.SCREENLAYOUT_SIZE_SMALL){
-            isPhone = true;
+            return true;
         }
-        isPhone = false;
+        return false;
     }
 
     void setOrientation() {
-        IsPhone();
+        isPhone = IsPhone();
         if (isPhone){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
