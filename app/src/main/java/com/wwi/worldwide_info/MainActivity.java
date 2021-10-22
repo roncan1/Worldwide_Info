@@ -5,6 +5,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     int[] back_img = null;          // 지도 이미지 리소스
     Boolean[] checkCountry;         // 어떤 국가가 선택되어있는지
     Boolean selectCountry = false;  // 국가가 선택이 되어있는 상태인지
+    Boolean isPhone =true;
     String[] textTimeZone;          // 타임존 이름
     Animation info_open_anim, ic_on_anim, ic_off_anim, ic_none_anim, none_anim, fadeIn_anim, fadeOut_anim, fab_open, fab_close;
 
@@ -58,9 +61,31 @@ public class MainActivity extends AppCompatActivity {
         doFullScreen(); //전체화면
         setContentView(R.layout.activity_main);
         init();
+        setOrientation();
         selectCountry(); // 국가 선택
         openInfo(); // 인포화면 전환
     }
+
+    //폰인지 여부
+    public void IsPhone() {
+        //화면 사이즈 종류 구하기
+        int screenSizeType = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        if(screenSizeType== Configuration.SCREENLAYOUT_SIZE_NORMAL || screenSizeType==Configuration.SCREENLAYOUT_SIZE_SMALL){
+            isPhone = true;
+        }
+        isPhone = false;
+    }
+
+    void setOrientation() {
+        IsPhone();
+        if (isPhone){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+    }
+
 
     @Override
     protected void onResume() {
@@ -270,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
                         intent.putExtra("country", infoNum);
+                        intent.putExtra("phone", isPhone);
                         startActivity(intent);
                     }
                 }, 700);

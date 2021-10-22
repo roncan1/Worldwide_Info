@@ -1,6 +1,7 @@
 package com.wwi.worldwide_info;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -41,7 +42,7 @@ public class InfoActivity extends AppCompatActivity {
 
     String[] info_description_kr, info_description_eng, web_url;
     int country;
-    Boolean isFabOpen = false, isInfoOpen = true;
+    Boolean isFabOpen = false, isInfoOpen = true, isPhone = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +51,27 @@ public class InfoActivity extends AppCompatActivity {
         doFullScreen();
         setContentView(R.layout.activity_info);
         init();
+        setOrientation(isPhone);
         descriptionInit();
         infoSet(country);
         imageOpen(country);
         setPab();
         setCovidWeb(country);
         showToast();
+    }
+
+    @Override
+    public void onBackPressed() {
+        endInfoActivity();
+//        super.onBackPressed();
+    }
+
+    void setOrientation(Boolean isPhone) {
+        if (isPhone){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
     }
 
     void showToast() {
@@ -261,6 +277,8 @@ public class InfoActivity extends AppCompatActivity {
             explosionField.explode(info_img2);
             explosionField.explode(info_img3);
         } else {
+            explosionField.explode(thisActivity);
+            explosionField.explode(info_title);
             explosionField.explode(web_covid);
             explosionField.explode(TV_covid);
         }
@@ -333,6 +351,7 @@ public class InfoActivity extends AppCompatActivity {
 
         intent = getIntent();
         country = intent.getIntExtra("country", 0);
+        isPhone = intent.getBooleanExtra("phone", true);
     }
 
     void descriptionInit() {
